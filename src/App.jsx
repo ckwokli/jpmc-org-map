@@ -344,43 +344,50 @@ const NetworkGraph = () => {
   const [showInfluence, setShowInfluence] = useState(true);
   const [filter, setFilter] = useState("all");
   const [peopleData, setPeopleData] = useState({
-    dimon: { name: "Jamie Dimon", short: "Dimon", title: "Chairman & CEO", cluster: "exec", influence: 10, x: 450, y: 30 },
-    piepszak: { name: "Jennifer Piepszak", short: "Piepszak", title: "COO", cluster: "exec", influence: 8, x: 320, y: 90 },
-    barnum: { name: "Jeremy Barnum", short: "Barnum", title: "CFO", cluster: "exec", influence: 7, x: 450, y: 90 },
-    friedman: { name: "Stacey Friedman", short: "Friedman", title: "General Counsel", cluster: "exec", influence: 6, x: 580, y: 90 },
-    beer: { name: "Lori Beer", short: "Beer", title: "Global CIO", cluster: "tech", influence: 8, x: 80, y: 170 },
-    feinsmith: { name: "Larry Feinsmith", short: "Feinsmith", title: "Tech Strategy", cluster: "tech", influence: 6, x: 40, y: 250 },
-    opet: { name: "Patrick Opet", short: "Opet", title: "CISO", cluster: "tech", influence: 5, x: 120, y: 250 },
-    kane: { name: "Joe Kane", short: "Kane", title: "Tech Partnerships", cluster: "tech", influence: 5, x: 80, y: 330, contact: true },
-    heitsenrether: { name: "Teresa Heitsenrether", short: "Heitsenrether", title: "CDAO", cluster: "ai", influence: 8, x: 220, y: 170, key: true },
-    waldron: { name: "Derek Waldron", short: "Waldron", title: "Chief Analytics Officer", cluster: "ai", influence: 7, x: 180, y: 260, key: true },
-    veloso: { name: "Manuela Veloso", short: "Veloso", title: "Head of AI Research", cluster: "ai", influence: 6, x: 260, y: 250 },
-    lyons: { name: "Terah Lyons", short: "Lyons", title: "AI Policy", cluster: "ai", influence: 5, x: 260, y: 320 },
-    chittar: { name: "Naren Chittar", short: "Chittar", title: "LLM Suite Lead", cluster: "ai", influence: 6, x: 180, y: 340, contact: true },
-    petno: { name: "Doug Petno", short: "Petno", title: "Co-CEO CIB", cluster: "cib", influence: 9, x: 480, y: 170 },
-    rohrbaugh: { name: "Troy Rohrbaugh", short: "Rohrbaugh", title: "Co-CEO CIB", cluster: "cib", influence: 9, x: 600, y: 170 },
-    simmons: { name: "John Simmons", short: "Simmons", title: "Head of CB", cluster: "cib", influence: 6, x: 380, y: 250 },
-    bloch: { name: "Joel Bloch", short: "Bloch", title: "Head CIB AI", cluster: "cib", influence: 7, x: 540, y: 400, contact: true, key: true },
-    steed: { name: "Patrick Steed", short: "Steed", title: "Fintech Partnerships", cluster: "cib", influence: 5, x: 680, y: 330, contact: true },
-    sanwal: { name: "Riddhi Sanwal", short: "Sanwal", title: "CIB AI Team", cluster: "cib", influence: 4, x: 480, y: 470, contact: true },
-    zislin: { name: "Elena Zislin", short: "Zislin", title: "Ventures", cluster: "cib", influence: 5, x: 680, y: 400, contact: true },
-    // IB Technology team (new)
-    eking: { name: "Erin King", short: "E.King", title: "Senior IB Tech Leader", cluster: "cib", influence: 8, x: 440, y: 240, key: true },
-    paty: { name: "Prashanthi Paty", short: "Paty", title: "IB CTO", cluster: "cib", influence: 7, x: 380, y: 310, key: true },
-    castillo: { name: "Dave Castillo", short: "Castillo", title: "Head AI/ML Tech", cluster: "cib", influence: 7, x: 320, y: 380, key: true },
-    eavy: { name: "Ryan Eavy", short: "Eavy", title: "Head Eng & Arch", cluster: "cib", influence: 6, x: 400, y: 380 },
-    tsoi: { name: "Will Tsoi", short: "Tsoi", title: "Head Tech Strategy", cluster: "cib", influence: 5, x: 500, y: 310, contact: true },
-    // Transaction Development team (new)
-    crisp: { name: "Alex Crisp", short: "Crisp", title: "Digital Strategy", cluster: "cib", influence: 5, x: 360, y: 400, contact: true },
-    motwani: { name: "Hemant Motwani", short: "Motwani", title: "Tech Lead", cluster: "cib", influence: 5, x: 320, y: 470, contact: true },
-    katariya: { name: "Jasdeep Katariya", short: "Katariya", title: "Engineer", cluster: "cib", influence: 3, x: 280, y: 530 },
-    grama: { name: "Arjun Grama", short: "Grama", title: "PM", cluster: "cib", influence: 4, x: 400, y: 470, contact: true },
-    // Digital Investment Banking (new)
-    elanjian: { name: "Mike Elanjian", short: "Elanjian", title: "Head Digital IB", cluster: "cib", influence: 7, x: 600, y: 250, key: true },
-    markwell: { name: "Stephen Markwell", short: "Markwell", title: "Fintech Partnerships", cluster: "cib", influence: 6, x: 600, y: 330, key: true },
-    erdoes: { name: "Mary Erdoes", short: "Erdoes", title: "CEO AWM", cluster: "awm", influence: 8, x: 760, y: 170 },
-    coulby: { name: "William Coulby", short: "Coulby", title: "AWM Tech", cluster: "awm", influence: 4, x: 760, y: 260, contact: true },
-    lake: { name: "Marianne Lake", short: "Lake", title: "CEO CCB", cluster: "ccb", influence: 8, x: 850, y: 120 },
+    // Executive row - top
+    dimon: { name: "Jamie Dimon", short: "Dimon", title: "Chairman & CEO", cluster: "exec", influence: 10, x: 550, y: 30 },
+    piepszak: { name: "Jennifer Piepszak", short: "Piepszak", title: "COO", cluster: "exec", influence: 8, x: 420, y: 90 },
+    barnum: { name: "Jeremy Barnum", short: "Barnum", title: "CFO", cluster: "exec", influence: 7, x: 550, y: 90 },
+    friedman: { name: "Stacey Friedman", short: "Friedman", title: "General Counsel", cluster: "exec", influence: 6, x: 680, y: 90 },
+    // Tech - left side
+    beer: { name: "Lori Beer", short: "Beer", title: "Global CIO", cluster: "tech", influence: 8, x: 70, y: 180 },
+    feinsmith: { name: "Larry Feinsmith", short: "Feinsmith", title: "Tech Strategy", cluster: "tech", influence: 6, x: 40, y: 270 },
+    opet: { name: "Patrick Opet", short: "Opet", title: "CISO", cluster: "tech", influence: 5, x: 100, y: 270 },
+    kane: { name: "Joe Kane", short: "Kane", title: "Tech Partnerships", cluster: "tech", influence: 5, x: 70, y: 360, contact: true },
+    // AI/CDAO - left-center
+    heitsenrether: { name: "Teresa Heitsenrether", short: "Heitsenrether", title: "CDAO", cluster: "ai", influence: 8, x: 200, y: 180, key: true },
+    waldron: { name: "Derek Waldron", short: "Waldron", title: "Chief Analytics Officer", cluster: "ai", influence: 7, x: 170, y: 280, key: true },
+    veloso: { name: "Manuela Veloso", short: "Veloso", title: "Head of AI Research", cluster: "ai", influence: 6, x: 230, y: 270 },
+    lyons: { name: "Terah Lyons", short: "Lyons", title: "AI Policy", cluster: "ai", influence: 5, x: 230, y: 350 },
+    chittar: { name: "Naren Chittar", short: "Chittar", title: "LLM Suite Lead", cluster: "ai", influence: 6, x: 170, y: 370, contact: true },
+    // CIB Leadership - center
+    petno: { name: "Doug Petno", short: "Petno", title: "Co-CEO CIB", cluster: "cib", influence: 9, x: 480, y: 180 },
+    rohrbaugh: { name: "Troy Rohrbaugh", short: "Rohrbaugh", title: "Co-CEO CIB", cluster: "cib", influence: 9, x: 620, y: 180 },
+    simmons: { name: "John Simmons", short: "Simmons", title: "Head of CB", cluster: "cib", influence: 6, x: 340, y: 180 },
+    // IB Technology team - center-left under Petno
+    eking: { name: "Erin King", short: "E.King", title: "Senior IB Tech Leader", cluster: "cib", influence: 8, x: 400, y: 270, key: true },
+    paty: { name: "Prashanthi Paty", short: "Paty", title: "IB CTO", cluster: "cib", influence: 7, x: 340, y: 360, key: true },
+    tsoi: { name: "Will Tsoi", short: "Tsoi", title: "Head Tech Strategy", cluster: "cib", influence: 5, x: 460, y: 360, contact: true },
+    castillo: { name: "Dave Castillo", short: "Castillo", title: "Head AI/ML Tech", cluster: "cib", influence: 7, x: 290, y: 440, key: true },
+    eavy: { name: "Ryan Eavy", short: "Eavy", title: "Head Eng & Arch", cluster: "cib", influence: 6, x: 390, y: 440 },
+    // Transaction Development team - bottom left
+    crisp: { name: "Alex Crisp", short: "Crisp", title: "Digital Strategy", cluster: "cib", influence: 5, x: 340, y: 520, contact: true },
+    motwani: { name: "Hemant Motwani", short: "Motwani", title: "Tech Lead", cluster: "cib", influence: 5, x: 270, y: 590, contact: true },
+    katariya: { name: "Jasdeep Katariya", short: "Katariya", title: "Engineer", cluster: "cib", influence: 3, x: 200, y: 650 },
+    grama: { name: "Arjun Grama", short: "Grama", title: "PM", cluster: "cib", influence: 4, x: 410, y: 590, contact: true },
+    // Digital Investment Banking - center-right under Petno
+    elanjian: { name: "Mike Elanjian", short: "Elanjian", title: "Head Digital IB", cluster: "cib", influence: 7, x: 560, y: 270, key: true },
+    markwell: { name: "Stephen Markwell", short: "Markwell", title: "Fintech Partnerships", cluster: "cib", influence: 6, x: 560, y: 360, key: true },
+    // CIB AI Team - under Elanjian
+    bloch: { name: "Joel Bloch", short: "Bloch", title: "Head CIB AI", cluster: "cib", influence: 7, x: 560, y: 450, contact: true, key: true },
+    sanwal: { name: "Riddhi Sanwal", short: "Sanwal", title: "CIB AI Team", cluster: "cib", influence: 4, x: 500, y: 530, contact: true },
+    steed: { name: "Patrick Steed", short: "Steed", title: "Fintech Partnerships", cluster: "cib", influence: 5, x: 700, y: 360, contact: true },
+    zislin: { name: "Elena Zislin", short: "Zislin", title: "Ventures", cluster: "cib", influence: 5, x: 700, y: 450, contact: true },
+    // AWM - right side
+    erdoes: { name: "Mary Erdoes", short: "Erdoes", title: "CEO AWM", cluster: "awm", influence: 8, x: 820, y: 180 },
+    coulby: { name: "William Coulby", short: "Coulby", title: "AWM Tech", cluster: "awm", influence: 4, x: 820, y: 280, contact: true },
+    // CCB - far right
+    lake: { name: "Marianne Lake", short: "Lake", title: "CEO CCB", cluster: "ccb", influence: 8, x: 920, y: 130 },
   });
 
   const updatePerson = (id, field, value) => {
@@ -448,7 +455,7 @@ const NetworkGraph = () => {
         <div className="flex items-center gap-1"><div className="w-4 h-4 rounded-full border-2 border-cyan-400"></div> Contact</div>
       </div>
 
-      <svg viewBox="0 0 920 560" className="w-full bg-gray-900 rounded-lg">
+      <svg viewBox="0 0 1000 700" className="w-full bg-gray-900 rounded-lg">
         {edges.map((edge, i) => {
           const from = peopleData[edge.from];
           const to = peopleData[edge.to];
